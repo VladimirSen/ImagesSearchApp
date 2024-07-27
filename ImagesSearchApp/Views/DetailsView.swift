@@ -1,0 +1,30 @@
+//
+//  DetailsView.swift
+//  ImagesSearchApp
+//
+//  Created by Владимир Сеньков on 27.07.24.
+//
+
+import SwiftUI
+
+struct DetailView: View {
+    @State var imageString: String
+    @State var description: String
+    @State var photographer: String
+    
+    var body: some View {
+        VStack {
+            ImageView(urlString: imageString)
+                .frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.height - 240)
+            HStack(spacing: 10) {
+                Text("Photographer:")
+                Text(photographer)
+                    .font(.title3)
+            }
+            .fontDesign(.monospaced)
+            .foregroundColor(.blue)
+            .padding(.top, 10)
+        }
+        .navigationBarTitle(Text(description), displayMode: .inline)
+    }
+}
