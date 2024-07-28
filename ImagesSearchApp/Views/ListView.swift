@@ -37,9 +37,14 @@ struct ListView: View {
                                                            description: image.alt,
                                                            photographer: image.photographer)) {
                         HStack(spacing: 20) {
-                            ImageView(urlString: image.src.small)
-                                .frame(width: 60, height: 60)
-                                .cornerRadius(10)
+                            AsyncImage(url: URL(string: image.src.small)) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 60, height: 60)
                             Text(image.alt)
                                 .font(.headline)
                                 .fontDesign(.monospaced)

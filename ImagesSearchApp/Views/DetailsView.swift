@@ -14,8 +14,14 @@ struct DetailView: View {
     
     var body: some View {
         VStack {
-            ImageView(urlString: imageString)
-                .frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.height - 240)
+            AsyncImage(url: URL(string: imageString)) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.height - 240)
             HStack(spacing: 10) {
                 Text("Photographer:")
                 Text(photographer)

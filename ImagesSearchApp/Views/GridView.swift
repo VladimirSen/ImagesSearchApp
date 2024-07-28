@@ -56,8 +56,13 @@ struct GridView: View {
                                                                    description: image.alt,
                                                                    photographer: image.photographer)) {
                                 ZStack {
-                                    ImageView(urlString: image.src.tiny)
-                                        .frame(width: 180, height: 120)
+                                    AsyncImage(url: URL(string: image.src.tiny)) { image in
+                                        image.resizable()
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                    .frame(width: 180, height: 120)
+                                    .cornerRadius(10)
                                 }
                             }
                         }
