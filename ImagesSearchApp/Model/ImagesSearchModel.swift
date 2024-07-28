@@ -10,7 +10,8 @@ struct SearchResponse: Codable {
 }
 
 struct Photo: Codable, Identifiable {
-    var id: Int
+    let id: Int
+    let url: String
     let photographer: String
     let src: Src
     let alt: String

@@ -35,7 +35,8 @@ struct ListView: View {
                 List(viewModel.searchResponse?.photos ?? [], id: \.id) { image in
                     NavigationLink(destination: DetailView(imageString: image.src.large2X,
                                                            description: image.alt,
-                                                           photographer: image.photographer)) {
+                                                           photographer: image.photographer,
+                                                           imageShareString: image.url)) {
                         HStack(spacing: 20) {
                             AsyncImage(url: URL(string: image.src.small)) { image in
                                 image

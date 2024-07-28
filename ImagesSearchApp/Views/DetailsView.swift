@@ -11,6 +11,7 @@ struct DetailView: View {
     @State var imageString: String
     @State var description: String
     @State var photographer: String
+    @State var imageShareString: String
     
     var body: some View {
         VStack {
@@ -28,9 +29,9 @@ struct DetailView: View {
                     .font(.title3)
             }
             .fontDesign(.monospaced)
-            .foregroundColor(.blue)
-            .padding(.top, 10)
+            .padding(10)
         }
         .navigationBarTitle(Text(description), displayMode: .inline)
+        .navigationBarItems(trailing: ShareLink("", item: imageShareString))
     }
 }

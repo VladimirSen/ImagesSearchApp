@@ -54,7 +54,8 @@ struct GridView: View {
                         ForEach(viewModel.searchResponse?.photos ?? [], id: \.id) { image in
                             NavigationLink(destination: DetailView(imageString: image.src.large2X,
                                                                    description: image.alt,
-                                                                   photographer: image.photographer)) {
+                                                                   photographer: image.photographer,
+                                                                   imageShareString: image.url)) {
                                 ZStack {
                                     AsyncImage(url: URL(string: image.src.tiny)) { image in
                                         image.resizable()
